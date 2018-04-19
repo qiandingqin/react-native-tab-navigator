@@ -118,26 +118,30 @@ export default class TabNavigator extends React.Component {
     } else if (item.props.badgeText) {
       badge = <Badge>{item.props.badgeText}</Badge>;
     }
-
-    return (
-      <Tab
-        testID={item.props.testID}
-        title={item.props.title}
-        allowFontScaling={item.props.allowFontScaling}
-        titleStyle={[
-          item.props.titleStyle,
-          item.props.selected ? [
-            styles.defaultSelectedTitle,
-            item.props.selectedTitleStyle,
-          ] : null,
-        ]}
-        badge={badge}
-        onPress={item.props.onPress}
-        hidesTabTouch={this.props.hidesTabTouch}
-        style={item.props.tabStyle}>
-        {icon}
-      </Tab>
-    );
+    //自定义第三方组件--
+    if(item.props.title == 'display:none'){
+      return <View></View>
+    }else{
+      return (
+        <Tab
+          testID={item.props.testID}
+          title={item.props.title}
+          allowFontScaling={item.props.allowFontScaling}
+          titleStyle={[
+            item.props.titleStyle,
+            item.props.selected ? [
+              styles.defaultSelectedTitle,
+              item.props.selectedTitleStyle,
+            ] : null,
+          ]}
+          badge={badge}
+          onPress={item.props.onPress}
+          hidesTabTouch={this.props.hidesTabTouch}
+          style={item.props.tabStyle}>
+          {icon}
+        </Tab>
+      );
+    }
   }
 }
 
